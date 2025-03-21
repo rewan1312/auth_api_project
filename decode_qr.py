@@ -50,5 +50,5 @@ btn_decode.pack(pady=10)
 label_img = tk.Label(root)
 label_img.pack(pady=10)
 
-# Run the GUI
+
 root.mainloop()
