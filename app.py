@@ -22,7 +22,7 @@ app.config["JWT_SECRET_KEY"] = "your_jwt_secret"
 jwt = JWTManager(app)
 
 
-# ✅ Register Route (Check for duplicate users)
+#  Register Route (Check for duplicate users)
 @app.route('/register', methods=['POST'])
 def register():
     data = request.json
@@ -54,7 +54,7 @@ def register():
     return jsonify({"message": "User registered successfully", "twofa_secret": secret}), 201
 
 
-# ✅ Generate QR Code for 2FA
+#  Generate QR Code for 2FA
 @app.route('/qrcode/<username>', methods=['GET'])
 def generate_qr(username):
     cur = mysql.connection.cursor()
@@ -76,7 +76,7 @@ def generate_qr(username):
     return jsonify({"qrcode": img_str})
 
 
-# ✅ Login Route with 2FA
+#  Login Route with 2FA
 @app.route('/login', methods=['POST'])
 def login():
     data = request.json
@@ -102,7 +102,7 @@ def login():
     return jsonify({"access_token": access_token}), 200
 
 
-# ✅ Add Product (Requires Authentication)
+#  Add Product (Requires Authentication)
 @app.route('/product', methods=['POST'])
 @jwt_required()
 def add_product():
@@ -121,7 +121,7 @@ def add_product():
     return jsonify({"message": "Product added"}), 201
 
 
-# ✅ Get All Products (Requires Authentication)
+#  Get All Products (Requires Authentication)
 @app.route('/products', methods=['GET'])
 @jwt_required()
 def get_products():
@@ -134,7 +134,7 @@ def get_products():
     return jsonify(product_list)
 
 
-# ✅ Update Product (Requires Authentication)
+# update Product (Requires Authentication)
 @app.route('/product/<int:product_id>', methods=['PUT'])
 @jwt_required()
 def update_product(product_id):
@@ -165,6 +165,5 @@ def delete_product(product_id):
     return jsonify({"message": "Product deleted"}), 200
 
 
-# ✅ Run the Application
 if __name__ == '__main__':
     app.run(debug=True)
