@@ -27,7 +27,7 @@ def decode_qr():
         label_img.image = img_tk  # Keep a reference to avoid garbage collection
 
     except Exception as e:
-        messagebox.showerror("Error", f"❌ Failed to decode QR Code: {e}")
+        messagebox.showerror("Error", f" Failed to decode QR Code: {e}")
 
 # Create the GUI window
 root = tk.Tk()
@@ -35,7 +35,7 @@ root.title("QR Code Decoder")
 root.geometry("500x600")
 
 # Label
-label = tk.Label(root, text="📌 Enter Base64 QR Code:", font=("Arial", 12))
+label = tk.Label(root, text="Enter Base64 QR Code:", font=("Arial", 12))
 label.pack(pady=10)
 
 # Text input for Base64
